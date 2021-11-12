@@ -7,88 +7,15 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+
+    <button id = 'rock'     class = "btn">Rock</button>
+    <button id = 'paper'    class = "btn">Paper</button>
+    <button id = 'scissors' class = "btn">Scissors</button>
+
+    <div id="scoreBoard"></div>
 </body>
-<script>
-    function computerPlay() {
-        let choice = Math.floor((Math.random() * 3));
 
-        switch (choice) {
-            case 0:
-                return "rock";
-                break;
-            case 1:
-                return "paper";
-                break;
-            case 2:
-                return "scissors";
-                break;
-        }
-    }
+<script src="./app.js"></script>
 
-    function playRound(playerSelection, computerSelection) {
-        const lossStatement = `You Lose! ${computerSelection.toLowerCase()} beats ${playerSelection.toLowerCase()}`
-        const winStatement = `You Win! ${playerSelection.toLowerCase()} beats ${computerSelection.toLowerCase()}`
-        const tieStatement = "It's a tie!"
-
-        switch (playerSelection.toLowerCase()) {
-            case 'rock':
-                switch (computerSelection) {
-                    case 'rock': return ['tie',tieStatement]; break;
-                    case 'paper': return ['loss',lossStatement]; break;
-                    case 'scissors': return ['win',winStatement]; break;
-                };
-                break;
-            case 'paper':
-                switch (computerSelection) {
-                    case 'rock': return ['win',winStatement]; break;
-                    case 'paper': return ['tie',tieStatement]; break;
-                    case 'scissors': return ['loss',lossStatement]; break;
-                };
-                break;
-            case 'scissors':
-                switch (computerSelection) {
-                    case 'rock': return ['loss',lossStatement]; break;
-                    case 'paper': return ['win',winStatement]; break;
-                    case 'scissors': return ['tie',tieStatement]; break;
-                };
-                break;
-        }
-    }
-
-    function game() {
-        let playerScore = 0;
-        let computerScore = 0;
-        
-        do {
-            // let currentScore = `Player: ${playerScore}, Computer: ${computerScore}`
-            let playerSelection = prompt("Enter rock, paper, or scissors").toLowerCase();
-            let computerSelection = computerPlay();
-            let result = playRound(playerSelection, computerSelection);
-
-            switch (result[0]) {
-                case 'win':
-                    playerScore++;
-                    console.log(result[1])
-                    // console.log(currentScore)
-                    break;
-                case 'loss':
-                    computerScore++;
-                    console.log(result[1])
-                    // console.log(currentScore)
-                    break;
-                case 'tie':
-                    console.log(result[1])
-                    // console.log(currentScore)
-                    break;
-            }
-
-        } while (playerScore < 3 && computerScore < 3);
-
-        console.log(`Player: ${playerScore}, Computer: ${computerScore}`)
-
-    }
-
-    game();
-</script>
 </html>
 
